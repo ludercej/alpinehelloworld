@@ -5,10 +5,10 @@ pipeline {
        IMAGE_TAG = "latest"
        // PORT_EXPOSED = "80" à paraméter dans le job obligatoirement
        APP_NAME = "ulrich"
-       STG_API_ENDPOINT = "ip10-0-1-3-cc7bafssrdn0fvnms4tg-1993.direct.docker.labs.eazytraining.fr"
-       STG_APP_ENDPOINT = "ip10-0-1-3-cc7bafssrdn0fvnms4tg-80.direct.docker.labs.eazytraining.fr"
-       PROD_API_ENDPOINT = "ip10-0-1-4-cc7bafssrdn0fvnms4tg-1993.direct.docker.labs.eazytraining.fr"
-       PROD_APP_ENDPOINT = "ip10-0-1-4-cc7bafssrdn0fvnms4tg-80.direct.docker.labs.eazytraining.fr"
+       STG_API_ENDPOINT = "192.168.14.204"
+       STG_APP_ENDPOINT = "192.168.14.204"
+       PROD_API_ENDPOINT = "192.168.14.204"
+       PROD_APP_ENDPOINT = "192.168.14.204"
        INTERNAL_PORT = "5000"
        EXTERNAL_PORT = "${PORT_EXPOSED}"
        CONTAINER_IMAGE = "${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -42,7 +42,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://172.17.0.1:${PORT_EXPOSED} | grep -q "Hello world!"
+                    curl http://"192.168.14.204":${PORT_EXPOSED} | grep -q "Hello world!"
                 '''
               }
            }
